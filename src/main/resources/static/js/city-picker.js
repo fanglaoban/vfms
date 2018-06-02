@@ -70,7 +70,7 @@
                     this.getWidthStyle(p.width, true) + '">' +
                     '<div class="city-select-wrap">' +
                     '<div class="city-select-tab">' +
-                    '<a class="active" data-count="province">区域</a>' +
+                    '<a class="active" data-count="province">省份</a>' +
                     (this.includeDem('city') ? '<a data-count="city">景区</a>' : '') +
                     (this.includeDem('district') ? '<a data-count="district">景点</a>' : '') + '</div>' +
                     '<div class="city-select-content">' +
@@ -526,7 +526,7 @@
     CityPicker.DEFAULTS = {
         simple: false,
         responsive: false,
-        placeholder: '请选择省/市/区',
+        placeholder: '请选择省份/景区/景点',
         level: 'district',
         province: '',
         city: '',
