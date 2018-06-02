@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>首页-游客流量监测系统</title>
+<meta name="author" content="DeathGhost" />
+<link rel="stylesheet" type="text/css" href="css/style.css" th:href="@{/css/style.css}"/>
+<!--[if lt IE 9]>
+<script src="js/html5.js"></script>
+<![endif]-->
+<script src="js/jquery.js" th:src="@{/js/jquery.js}"></script>
+<script src="js/jquery.mCustomScrollbar.concat.min.js" th:src="@{/js/jquery.mCustomScrollbar.concat.min.js}"></script>
+<script type="text/javascript" src="js/header.js" th:src="@{/js/header.js}"></script>
+<script type="text/javascript" src="js/lt_aside_nav.js" th:src="@{/js/lt_aside_nav.js}"></script>
+<script type="text/javascript" src="js/city-picker.data.js" th:src="@{/js/city-picker.data.js}"></script>
+<script type="text/javascript" src="js/city-picker.js" th:src="@{/js/city-picker.js}">
+</script><script type="text/javascript" src="js/city-picker.main.js" th:src="@{/js/city-picker.main.js}"></script>
+
+
+</head>
+<body>
+<!--header-->
+<header class="header_top">
+
+</header>
+<!--aside nav-->
+<!--aside nav-->
+<aside  class="lt_aside_nav content mCustomScrollbar">
+ <!--  
+ <h2><a href="index_admin.html">Management System </a></h2>
+ <ul>
+  <li >
+   <dl>
+    <dt>Shop Owner Management </dt>
+    
+    <dd><a href="owner_request_admin.html">Shop Owner Request</a></dd>
+    <dd><a href="owner_admin.html">Shop Owner Management</a></dd>
+    <dd><a href="owner_blacklist_admin.html">Shop Owner Blacklist</a></dd>
+   </dl>
+  </li>
+  <li>
+   <dl>
+    <dt>Customer Magagement</dt>
+    <dd><a href="customer_admin.html">Customer Magagement</a></dd>
+    <dd><a href="customer_blacklist_admin.html">Customer Blacklist</a></dd>
+   </dl>
+  </li>
+  <li>
+   <dl>
+    <dt>Order Magagement</dt>
+     <dd><a href="order_tracking_admin.html">Order Tracking</a></dd>
+     <dd><a href="sales_record_admin.html">Sales Record Query</a></dd>
+   </dl>
+  </li>
+  <li>
+   <dl>
+    <dt>Sales Management</dt>
+    <dd><a href="commission_income_admin.html">Commission Income Query</a></dd>
+    <dd><a href="commission_rate_admin.html">Commission Management</a></dd>
+   </dl>
+  </li>
+  <li>
+   <dl>
+    <dt>Advertising Management</dt>
+    <dd><a href="ad_shop_admin.html">Shop Advertising</a></dd>
+    <dd><a href="ad_product_admin.html">Product Advertising</a></dd>
+   </dl>
+  </li>
+  <li>
+   <p class="btm_infor">© PARKNSHOP.com  Copyright Infringement</p>
+  </li>
+  
+ </ul>
+   -->
+</aside>
+<!--  -->
+<section class="rt_wrap content mCustomScrollbar">
+ <div class="rt_content">
+   
+      
+      <div class="indexinfo">
+      	欢迎使用游客流量监测系统 !
+      </div>
+    <form class="form-inline" style="margin-left:30%;" th:action="@{/}">
+		<div id="distpicker" class="form-group">
+			<div class="form-group">
+				<div style="position: relative;">
+					<input id="city-picker3" class="form-control" readonly="readonly" type="text" value="陕西省/西安市" data-toggle="city-picker" name="name" />
+				</div>
+			</div>
+			<div class="form-group">
+				<button class="group_btn" id="reset" type="button">重置</button>
+			</div>
+			<input type="submit" value="前往景区" class="group_btn" />
+		</div>
+	</form>
+		<div  class="indeximg">
+      	<img alt="主页图片" src="images/indeximg1.jpg" th:src="@{/images/indeximg1.jpg}" />
+      </div>
+     <footer class="developerinfo">
+
+ 		<div class="aboutUs">
+ 			<ul>
+ 				<li>关于我们</li>
+ 				<li>联系我们</li>
+ 				<li>服务条款</li>
+ 				<li>隐私协议</li>
+ 				<li>帮助</li>
+ 			</ul>
+ 		</div>
+ 		<div class="companyName">
+ 			<p>游客流量监测系统项目组 - 西安电子科技大学</p>
+ 		</div>
+     </footer>
+ </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>预警方式-游客流量监测系统</title>
+<meta name="author" content="DeathGhost" />
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<!--[if lt IE 9]>
+<script src="js/html5.js"></script>
+<![endif]-->
+<script src="js/jquery.js"></script>
+<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script type="text/javascript" src="js/header.js"></script>
+<script type="text/javascript" src="js/lt_aside_nav.js"></script>
+
+<script type="text/javascript" src="js/city-picker.data.js"></script>
+<script type="text/javascript" src="js/city-picker.js"></script>
+<script type="text/javascript" src="js/city-picker.main.js"></script>
+</head>
+<body>
+<!--header-->
+<header class="header_top">
+</header>
+<aside class="lt_aside_nav content mCustomScrollbar">
+ 
+</aside>
+
+<section class="rt_wrap content mCustomScrollbar">
+ <div class="rt_content">
+      <div class="page_title">
+       <h2 class="fl">预警方式设置</h2>
+      </div>
+
+     <form class="form-inline">
+     	<span class="item_name" style="width:120px;">当前地区：</span>
+		<div id="distpicker" class="form-group">
+			<div class="form-group">
+				<div style="position: relative;">
+					<input id="city-picker3" class="form-control" readonly type="text" value="陕西省/西安市" data-toggle="city-picker">
+				</div>
+			</div>
+			<div class="form-group">
+				<button class="group_btn" id="reset" type="button">重置</button>
+				<!-- <button class="group_btn" id="destroy" type="button">确定</button>  -->
+			</div>
+		</div>
+	</form>
+	
+	 <form class="form-inline radioarea" >
+	<span class="item_name" style="width:120px;">预警方式：</span>
+	        <input type="radio"  id="radio1"  name="radio"  checked="checked"/><label for="radio1">信息推送</label>
+	        <input type="radio"  id="radio2"  name="radio" /><label for="radio2">系统推送</label>
+	        <input type="radio"  id="radio3"  name="radio"  /><label for="radio3">景区广播</label>
+     </form>
+		<form action="">
+       <span class="item_name" style="width:120px;">预警信息内容：</span>
+       <div></div>
+       <span class="item_name" style="width:120px;"></span><textarea placeholder="输入预警信息内容" class="textarea" ></textarea>
+       <div style="height: 10px"></div>
+       <span class="item_name" style="width:120px;"></span><input type="submit" class="group_btn" value="保存设置"/>
+     </form>
+ </div>
+</section>
+</body>
+</html>
