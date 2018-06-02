@@ -32,7 +32,7 @@ $().ready(function(){
 							"</a>" +
 						"</dd>" +
 						"<dd>" +
-							"<a href='/visitor_flow_history.html'>" + "历史客流查询" +
+							"<a href='/user/visitor/flow/history'>" + "历史客流查询" +
 							"</a>" +
 						"</dd>" +
 					"</dl>" +
