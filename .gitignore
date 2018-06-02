@@ -26,3 +26,4 @@
 
 # 目标文件
 /target
+*.properties
