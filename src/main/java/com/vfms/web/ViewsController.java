@@ -34,7 +34,8 @@ public class ViewsController {
 
     /**
      * 根据景区/景点名字，时间查找相应景区/景点的人数
-     * @param name 景区/景点名字
+     *
+     * @param name  景区/景点名字
      * @param dates 时间
      * @return 对应时间对应景区/景点的人数
      */
@@ -62,6 +63,25 @@ public class ViewsController {
             }
         }
         return numbers;
+    }
+
+    /**
+     * 判断日期是否合法
+     *
+     * @param date 字符串日期 2018-06-02
+     * @return 是否合法
+     */
+    private boolean judgeDate(String date) throws ParseException {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date day = simpleDateFormat.parse(date);
+
+        Date judgeDate = new Date();
+        String judgeDateString = simpleDateFormat.format(judgeDate);
+        Date today = simpleDateFormat.parse(judgeDateString);
+
+        if (today.getTime() - day.getTime() >= 24 * 60 * 60 * 1000L)
+            return true;
+        return false;
     }
 
     /**
@@ -113,8 +133,8 @@ public class ViewsController {
 
     @GetMapping("/visitor/flow/predict")
     @ResponseBody
-    public Map<String,Object> predirectVisitorFlow(@RequestParam(value = "name",required = true,defaultValue = "陕西省/西安市") String name) throws ParseException {
-        Map<String,Object> map = new HashMap<>();
+    public Map<String, Object> predirectVisitorFlow(@RequestParam(value = "name", required = true, defaultValue = "陕西省/西安市") String name) throws ParseException {
+        Map<String, Object> map = new HashMap<>();
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String today = "2018-06-03 12:00:00";
@@ -124,18 +144,60 @@ public class ViewsController {
         Date[] blueDate = (Date[]) dates[0];
         Date[] redDate = (Date[]) dates[1];
 
-        Integer[] blue = getTimeNumbers(name,blueDate);
-        Integer[] red = getTimeNumbers(name,redDate);
+        Integer[] blue = getTimeNumbers(name, blueDate);
+        Integer[] red = getTimeNumbers(name, redDate);
 
         System.out.println(name);
         System.out.println(Arrays.toString(blue));
         System.out.println(Arrays.toString(red));
 
-        map.put("blue",blue);
-        map.put("red",red);
-        map.put("xtime",DateSwitch.dateToString(redDate));
+        map.put("blue", blue);
+        map.put("red", red);
+        map.put("xtime", DateSwitch.dateToString(redDate));
 
         return map;
     }
+
+    /**
+     * 获取历史客流查询的页面
+     *
+     * @return 历史客流查询的页面
+     */
+    @GetMapping("/{user}/visitor/flow/history")
+    public String getHistoryVisitorFlow() {
+        return "visitor_flow_history";
+    }
+
+    /**
+     *
+     * @param date
+     * @param name
+     * @return
+     * @throws ParseException
+     */
+    @GetMapping("/visitor/flow/history")
+    @ResponseBody
+    public Map<String, Object> historyVisitorFlow(@RequestParam(value = "date", required = true) String date, @RequestParam(value = "name", required = true, defaultValue = "陕西省/西安市") String name) throws ParseException {
+        Map<String, Object> map = new HashMap<>();
+
+        System.out.println(date);
+        System.out.println(name);
+
+        if (!judgeDate(date))
+            throw new IllegalArgumentException("日期不合法");
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date selectDate = simpleDateFormat.parse(date + " 23:00:00");
+        System.out.println(selectDate);
+        Object[] dates = DateSwitch.createPredictDateList(selectDate);
+        Date[] selectHours = (Date[]) dates[0];
+        Integer[] numbers = getTimeNumbers(name, selectHours);
+
+        map.put("xtime", DateSwitch.dateToString(selectHours));
+        map.put("numbers", numbers);
+
+        return map;
+    }
+
 
 }

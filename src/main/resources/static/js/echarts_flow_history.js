@@ -473,6 +473,27 @@ $().ready(function(){
 				setTimeout(function(){
 			 		chartQuantity.hideLoading();
 					chartQuantity.setOption(optionQuantity);
+
+                    $.ajax({
+                        url: "/visitor/flow/history",
+                        type: "GET",
+                        data: {"name":$("#city-picker3").val(),"date":$("#input_time").val()},
+                        success: function(data){
+                            chartQuantity.setOption({
+                                xAxis: {
+                                    data: data.xtime
+                                },
+                                series: {
+                                    name: '游客数量',
+                                    data: data.numbers
+                                }
+                            });
+                        },
+                        error: function(error){
+                            window.alert("日期不合法");
+                        }
+                    });
+
 			 	},800);
 			}
 			else if(selected.val() == "density"){
