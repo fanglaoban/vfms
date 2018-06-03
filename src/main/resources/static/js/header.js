@@ -1,7 +1,7 @@
 $().ready(function(){
 	var header = $(".header_top");
 	header.html(
-			" <img src='images/logo_management_128px.png' />" +
+			//" <img src='images/logo_management_128px.png' />" +
 			"<div class='logo_admin' > " +
 				"<h1> 游客流量监测系统 </h1>" +
 				"<p>Visitor Flow Monitoring System</p>" +
