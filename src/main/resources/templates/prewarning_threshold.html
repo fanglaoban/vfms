@@ -1,128 +1,130 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="utf-8"/>
-<title>阈值设置-游客流量监测系统</title>
-<meta name="author" content="DeathGhost" />
-<link rel="stylesheet" type="text/css" href="css/style.css">
-<!--[if lt IE 9]>
-<script src="js/html5.js"></script>
-<![endif]-->
-<script src="js/jquery.js"></script>
-<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-<script type="text/javascript" src="js/header.js"></script>
-<script type="text/javascript" src="js/lt_aside_nav.js"></script>
-<script type="text/javascript" src="js/city-picker.data.js"></script>
-<script type="text/javascript" src="js/city-picker.js">
-</script><script type="text/javascript" src="js/city-picker.main.js"></script>
-<script type="text/javascript" src="js/pop_threshold.js"></script>
+    <meta charset="utf-8"/>
+    <title>阈值设置-游客流量监测系统</title>
+    <meta name="author" content="DeathGhost"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css" th:href="@{/css/style.css}"/>
+    <!--[if lt IE 9]>
+    <script src="js/html5.js"></script>
+    <![endif]-->
+    <script src="js/jquery.js" th:src="@{/js/jquery.js}"></script>
+    <script src="js/jquery.mCustomScrollbar.concat.min.js"
+            th:src="@{/js/jquery.mCustomScrollbar.concat.min.js}"></script>
+    <script type="text/javascript" src="js/header.js" th:src="@{/js/header.js}"></script>
+    <script type="text/javascript" src="js/lt_aside_nav.js" th:src="@{/js/lt_aside_nav.js}"></script>
+    <script type="text/javascript" src="js/city-picker.data.js" th:src="@{/js/city-picker.data.js}"></script>
+    <script type="text/javascript" src="js/city-picker.js" th:src="@{/js/city-picker.js}">
+    </script>
+    <script type="text/javascript" src="js/city-picker.main.js" th:src="@{/js/city-picker.main.js}"></script>
+    <script type="text/javascript" src="js/pop_threshold.js" th:src="@{/js/pop_threshold.js}"></script>
 </head>
 <body>
 <!--header-->
 <header class="header_top">
 </header>
 <aside class="lt_aside_nav content mCustomScrollbar">
- 
+
 </aside>
 
 <section class="rt_wrap content mCustomScrollbar">
- <div class="rt_content">
-      <div class="page_title">
-      	<h2 class="fl">预警阈值设置</h2>
-      </div>
- 	   <form class="form-inline">
-		<div id="distpicker" class="form-group">
-			<div class="form-group">
-				<div style="position: relative;">
-					<input id="city-picker3" class="form-control" readonly type="text" value="江苏省/常州市/溧阳市" data-toggle="city-picker">
-				</div>
-			</div>
-			<div class="form-group">
-				<button class="group_btn" id="reset" type="button">重置</button>
-			</div>
-			<button class="group_btn"  type="button">确定</button>
-		</div>
-		</form>
-		
-		<table class="table table_thr">
-	       <tr>
-	        <th>阈值名称</th>
-	        <th>阈值级别</th>
-	        <th>阈值类型</th>
-	        <th>阈值数值</th>
-	        <th>阈值操作</th>
-	       </tr>
-	       <tr>
-	        <td>阈值名</td>
-	        <td>1级</td>
-	        <td>爆满</td>
-	        <td>99999</td>
-	        <td>
-	        	<a  class="link_btn modthr_btn">修改</a>
-	        	<a  class="link_btn delthr_btn">删除</a>
-	        </td>
-	       </tr>
-	       <tr>
-	        <td>阈值名</td>
-	        <td>1级</td>
-	        <td>爆满</td>
-	        <td>99999</td>
-	        <td>
-	        	<a class="link_btn modthr_btn">修改</a>
-	        	<a class="link_btn delthr_btn">删除</a>
-	        </td>
-	       </tr>
-      	</table>
-		<button class="link_btn addthr_btn">增加阈值</button>
+    <div class="rt_content">
+        <div class="page_title">
+            <h2 class="fl">预警阈值设置</h2>
+        </div>
+        <form class="form-inline" th:action="@{/prewarning/threshold/query}" method="get">
+            <div id="distpicker" class="form-group">
+                <div class="form-group">
+                    <div style="position: relative;">
+                        <input id="city-picker3" class="form-control" type="text" value="江苏省/常州市/溧阳市"
+                               data-toggle="city-picker" name="name" th:value="${name}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button class="group_btn" id="reset" type="button">重置</button>
+                </div>
+                <input class="group_btn" type="submit" value="确定"/>
+            </div>
+        </form>
 
-     <section class="pop_bg pop_thr">
-      <div class="pop_cont ">
-       <!--title-->
-       <h3>增加阈值</h3>
-       <!--content-->
-       <div class="pop_cont_input">
-        <ul>
-         <li>
-          <span>阈值名称</span>
-          <input type="text" placeholder="输入阈值名称" class="textbox thrname"/>
-         </li>
-         <li>
-          <span class="ttl">阈值级别</span>
-          <select  class="select sel_thrlevel">
-           <option value="lv1">1级</option>
-           <option value="lv2">2级</option>
-           <option value="lv3">3级</option>
-           <option value="lv4">4级</option>
-           <option value="lv5">5级</option>
-          </select>
-          <select class="select sel_thrtype">
-           <option value="ty1">爆满</option>
-           <option value="ty2">拥挤</option>
-           <option value="ty3">适宜</option>
-           <option value="ty4">最佳</option>
-           <option value="ty5">稀少</option>
-          </select>
-         </li>
-         <li>
-          <span class="ttl">阈值数值</span>
-          <input type="text" placeholder="输入阈值数值" class="textbox thrvalue"/>
-         </li>
-        </ul>
-       </div>
-       <!--以pop_cont_text分界-->
-       <div class="pop_cont_text pop_cont_warning">
-        	<!--  这里是文字性提示信息！ -->
-			      	
-       </div>
-       <!--bottom:operate->button-->
-       <div class="btm_btn">
-        <input type="button" value="确认" class="input_btn trueBtn "/>
-        <input type="button" value="取消" class="input_btn falseBtn"/>
-       </div>
-      </div>
-     </section>
-     
-  </div>
+        <table class="table table_thr">
+            <tr>
+                <th>阈值名称</th>
+                <th>阈值级别</th>
+                <th>阈值数值</th>
+                <th>阈值操作</th>
+            </tr>
+            <tr th:each="value:${values}">
+                <td th:text="${value.valuename}">阈值名</td>
+                <td th:text="${value.valuelevel}">1级</td>
+                <td th:text="${value.valuenumber}">99999</td>
+                <td>
+                    <!--<a  class="link_btn modthr_btn">修改</a>-->
+                    <a class="link_btn delthr_btn" th:href="@{'/prewarning/threshold/delete/'+${value.valueid}}">删除</a>
+                </td>
+            </tr>
+            <!--<tr>-->
+            <!--<td>阈值名</td>-->
+            <!--<td>1级</td>-->
+            <!--<td>99999</td>-->
+            <!--<td>-->
+            <!--<a class="link_btn modthr_btn">修改</a>-->
+            <!--<a class="link_btn delthr_btn">删除</a>-->
+            <!--</td>-->
+            <!--</tr>-->
+        </table>
+        <button class="link_btn addthr_btn">增加阈值</button>
+
+        <form th:action="@{/prewarning/threshold/add}" method="post">
+            <section class="pop_bg pop_thr">
+                <div class="pop_cont ">
+                    <!--title-->
+                    <h3>增加阈值</h3>
+                    <!--content-->
+                    <div class="pop_cont_input">
+                        <ul>
+                            <!--<li>-->
+                                <!--<span>阈值名称</span>-->
+                                <!--<input type="text" placeholder="输入阈值名称" class="textbox thrname" name="name"/>-->
+                            <!--</li>-->
+                            <li>
+                                <span class="ttl">阈值级别</span>
+                                <select class="select sel_thrlevel" name="level">
+                                    <option value="lv1">1级</option>
+                                    <option value="lv2">2级</option>
+                                    <option value="lv3">3级</option>
+                                    <option value="lv4">4级</option>
+                                    <option value="lv5">5级</option>
+                                </select>
+                                <select class="select sel_thrtype" name="name">
+                                    <option value="ty1">爆满</option>
+                                    <option value="ty2">拥挤</option>
+                                    <option value="ty3">适宜</option>
+                                    <option value="ty4">最佳</option>
+                                    <option value="ty5">稀少</option>
+                                </select>
+                            </li>
+                            <li>
+                                <span class="ttl">阈值数值</span>
+                                <input type="text" placeholder="输入阈值数值" class="textbox thrvalue" name="number"/>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--以pop_cont_text分界-->
+                    <div class="pop_cont_text pop_cont_warning">
+                        <!--  这里是文字性提示信息！ -->
+
+                    </div>
+                    <!--bottom:operate->button-->
+                    <div class="btm_btn">
+                        <input type="submit" value="确认" class="input_btn trueBtn "/>
+                        <input type="button" value="取消" class="input_btn falseBtn"/>
+                    </div>
+                </div>
+            </section>
+        </form>
+
+    </div>
 </section>
 </body>
 </html>

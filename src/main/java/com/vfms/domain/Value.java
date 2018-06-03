@@ -8,7 +8,7 @@ public class Value {
     private String valuename;
     private Integer valuelevel;
     private String valuenumber;
-    private Integer ssid;
+    private Integer viewid;
 
     public Integer getValueid() {
         return valueid;
@@ -42,11 +42,11 @@ public class Value {
         this.valuenumber = valuenumber;
     }
 
-    public Integer getSsid() {
-        return ssid;
+    public Integer getViewid() {
+        return viewid;
     }
 
-    public void setSsid(Integer ssid) {
-        this.ssid = ssid;
+    public void setViewid(Integer viewid) {
+        this.viewid = viewid;
     }
 }
