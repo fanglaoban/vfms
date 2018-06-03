@@ -490,6 +490,7 @@ $().ready(function(){
                             });
                         },
                         error: function(error){
+
                             window.alert("日期不合法");
                         }
                     });

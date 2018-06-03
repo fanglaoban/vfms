@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8"/>
 <title>账户管理-游客流量监测系统</title>
 <meta name="author" content="DeathGhost" />
-<link rel="stylesheet" type="text/css" href="css/style.css"/>
+<link rel="stylesheet" type="text/css" href="css/style.css" th:href="@{/css/style.css}"/>
 <!--[if lt IE 9]>
 <script src="js/html5.js"></script>
 <![endif]-->
-<script src="js/jquery.js"></script>
-<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-<script type="text/javascript" src="js/header.js"></script>
-<script type="text/javascript" src="js/lt_aside_nav.js"></script>
+<script src="js/jquery.js" th:src="@{/js/jquery.js}"></script>
+<script src="js/jquery.mCustomScrollbar.concat.min.js" th:src="@{/js/jquery.mCustomScrollbar.concat.min.js}"></script>
+<script type="text/javascript" src="js/header.js" th:src="@{/js/header.js}"></script>
+<script type="text/javascript" src="js/lt_aside_nav.js" th:src="@{/js/lt_aside_nav.js}"></script>
 
-<script type="text/javascript" src="js/account.js"></script>
+<script type="text/javascript" src="js/account.js" th:src="@{/js/account.js}"></script>
 </head>
 <body>
 <!--header-->

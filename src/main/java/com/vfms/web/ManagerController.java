@@ -54,6 +54,11 @@ public class ManagerController {
         return "system";
     }
 
+    @GetMapping("/manager/account")
+    public String getAdminAccount(){
+        return "admin_account";
+    }
+
 
 
 }

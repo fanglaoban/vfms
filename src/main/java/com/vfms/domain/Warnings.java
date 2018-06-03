@@ -7,13 +7,13 @@ import java.util.Date;
  */
 public class Warnings {
     private Integer warningid;
-    private Integer ssid;
+    private Integer viewid;
     private String warningmethod;
     private String warningcontext;
-    private String warningfrequency;
+    private Integer warningvalue;
     private Integer warninglevel;
-    private Date warningtime;
     private Integer warningstate;
+    private Date warningtime;
 
     public Integer getWarningid() {
         return warningid;
@@ -21,14 +21,6 @@ public class Warnings {
 
     public void setWarningid(Integer warningid) {
         this.warningid = warningid;
-    }
-
-    public Integer getSsid() {
-        return ssid;
-    }
-
-    public void setSsid(Integer ssid) {
-        this.ssid = ssid;
     }
 
     public String getWarningmethod() {
@@ -45,14 +37,6 @@ public class Warnings {
 
     public void setWarningcontext(String warningcontext) {
         this.warningcontext = warningcontext;
-    }
-
-    public String getWarningfrequency() {
-        return warningfrequency;
-    }
-
-    public void setWarningfrequency(String warningfrequency) {
-        this.warningfrequency = warningfrequency;
     }
 
     public Integer getWarninglevel() {
@@ -77,5 +61,21 @@ public class Warnings {
 
     public void setWarningstate(Integer warningstate) {
         this.warningstate = warningstate;
+    }
+
+    public Integer getViewid() {
+        return viewid;
+    }
+
+    public void setViewid(Integer viewid) {
+        this.viewid = viewid;
+    }
+
+    public Integer getWarningvalue() {
+        return warningvalue;
+    }
+
+    public void setWarningvalue(Integer warningvalue) {
+        this.warningvalue = warningvalue;
     }
 }

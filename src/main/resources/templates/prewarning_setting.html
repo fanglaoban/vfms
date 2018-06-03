@@ -1,194 +1,190 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="utf-8"/>
-<title>联动预警-游客流量监测系统</title>
-<meta name="author" content="DeathGhost" />
-<link rel="stylesheet" type="text/css" href="css/style.css">
-<!--[if lt IE 9]>
-<script src="js/html5.js"></script>
-<![endif]-->
-<script src="js/jquery.js"></script>
-<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-<script type="text/javascript" src="js/header.js"></script>
-<script type="text/javascript" src="js/lt_aside_nav.js"></script>
-<script type="text/javascript" src="js/city-picker.data.js"></script>
-<script type="text/javascript" src="js/city-picker.js">
-</script><script type="text/javascript" src="js/city-picker.main.js"></script>
-<script type="text/javascript" src="js/pop_setting.js"></script>
+    <meta charset="utf-8"/>
+    <title>联动预警-游客流量监测系统</title>
+    <meta name="author" content="DeathGhost"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css" th:href="@{/css/style.css}"/>
+    <!--[if lt IE 9]>
+    <script src="js/html5.js"></script>
+    <![endif]-->
+    <script src="js/jquery.js" th:src="@{/js/jquery.js}"></script>
+    <script src="js/jquery.mCustomScrollbar.concat.min.js"
+            th:src="@{/js/jquery.mCustomScrollbar.concat.min.js}"></script>
+    <script type="text/javascript" src="js/header.js" th:src="@{/js/header.js}"></script>
+    <script type="text/javascript" src="js/lt_aside_nav.js" th:src="@{/js/lt_aside_nav.js}"></script>
+    <script type="text/javascript" src="js/city-picker.data.js" th:src="@{/js/city-picker.data.js}"></script>
+    <script type="text/javascript" src="js/city-picker.js" th:src="@{/js/city-picker.js}">
+    </script>
+    <script type="text/javascript" src="js/city-picker.main.js" th:src="@{/js/city-picker.main.js}"></script>
+    <script type="text/javascript" src="js/pop_setting.js" th:src="@{/js/pop_setting.js}"></script>
 </head>
 <body>
 <!--header-->
 <header class="header_top">
 </header>
 <aside class="lt_aside_nav content mCustomScrollbar">
- 
+
 </aside>
 
 <section class="rt_wrap content mCustomScrollbar">
- <div class="rt_content">
-      <div class="page_title">
-       <h2 class="fl">联动预警设置</h2>
-      </div>
-       <form class="form-inline">
-		<div id="distpicker" class="form-group">
-			<div class="form-group">
-				<div style="position: relative;">
-					<input id="city-picker3" class="form-control" readonly type="text" value="陕西省/西安市" data-toggle="city-picker">
-				</div>
-			</div>
-			<div class="form-group">
-				<button class="group_btn" id="reset" type="button">重置</button>
-			</div>
-			<button class="group_btn"  type="button">确定</button>
-		</div>
-		</form>
- 	  <table class="table">
-	       <tr>
-	        <th>预警区域</th>
-	        <th>预警级别</th>
-	        <th>预警类型</th>
-	        <th>预警阈值</th>
-	        <th>预警方式</th>
-	        <th>操作</th>
-	       </tr>
-	       <tr>
-	        <td>大雁塔</td>
-	        <td>4级</td>
-	        <td>拥挤</td>
-	        <td>10000</td>
-	        <td>短信推送</td>
-	        <td>
-	        	<a class="link_btn modset_btn">修改</a>
-	        	<a class="link_btn delset_btn">删除</a>
-	        </td>
-	       </tr>
-	        <tr>
-	        <td>大雁塔</td>
-	        <td>5级</td>
-	        <td>爆满</td>
-	        <td>15000</td>
-	        <td>短信推送</td>
-	        <td>
-	        	<a class="link_btn modset_btn">修改</a>
-	        	<a class="link_btn delset_btn">删除</a>
-	        </td>
-	       </tr>
-      	</table>
-		<button class="link_btn" id="addWarning_btn">增加联动预警</button>
-		<button class="link_btn" id="issueWarning_btn">发布紧急预警</button>
-     <section class="pop_bg" id="addWarning_pop">
-      <div class="pop_cont">
-       <!--title-->
-       <h3>增加联动预警</h3>
-       <!--content-->
-       <div class="pop_cont_input">
-        <ul>
-        <!-- 
-         <li>
-          <span>预警区域</span>
-          <input type="text" placeholder="输入预警区域" class="textbox"/>
-         </li>
-          -->
-          <li>
-	         <span class="ttl">选择阈值</span>
-	          <input list="threshold_list" class="select" style="width: 200px;">
-	          <datalist id="threshold_list" >
-	           <option value="ty1"></option>
-	           <option value="ty2"></option>
-	           <option value="ty3"></option>
-	           <option value="ty4"></option>
-	           <option value="ty5"></option>
-	          </datalist>
-          </li>
-         <li>
-         <li>
-          <span class="ttl">阈值级别</span>
-          <select  class="select sel_thrlevel">
-           <option value="lv1">1</option>
-           <option value="lv2">2</option>
-           <option value="lv3">3</option>
-           <option value="lv4">4</option>
-           <option value="lv5">5</option>
-          </select>
-          <select class="select sel_thrtype" >
-           <option value="ty1">爆满</option>
-           <option value="ty2">拥挤</option>
-           <option value="ty3">适宜</option>
-           <option value="ty4">最佳</option>
-           <option value="ty5">稀少</option>
-          </select>
-          </li>
-         <li>
-          <span class="ttl">阈值数值</span>
-          <input type="text" placeholder="输入阈值数值" class="textbox"/>
-         </li>
-          <li>
-         <span class="ttl">预警方式</span>
-          <select class="select" style="width: 210px;" >
-           <option value="ty1">信息推送</option>
-           <option value="ty2">系统推送</option>
-           <option value="ty3">景区广播</option>
-          </select>
-          </li>
-          <li>
-          <span class="ttl">预警内容</span>
-          <textarea  placeholder="输入预警内容" class="textbox"></textarea>
-         </li>
-        </ul>
-       </div>
-       <!--以pop_cont_text分界-->
-       <div class="pop_cont_text">
-        	<!--  这里是文字性提示信息！ -->
-       </div>
-       <!--bottom:operate->button-->
-       <div class="btm_btn">
-        <input type="button" value="确认" class="input_btn trueBtn"/>
-        <input type="button" value="取消" class="input_btn falseBtn"/>
-       </div>
-      </div>
-     </section>
-      <section class="pop_bg" id="issueWarning_pop">
-      <div class="pop_cont">
-       <!--title-->
-       <h3>发布紧急预警</h3>
-       <!--content-->
-       <div class="pop_cont_input">
-        <ul>
-         <!-- 
-         <li>
-          <span>预警区域</span>
-          <input type="text" placeholder="输入预警区域" class="textbox"/>
-         </li>
-          -->
-         <li>
-          <span class="ttl">预警级别</span>
-          <select  class="select sel_thrlevel">
-           <option value="lv1">1</option>
-           <option value="lv2">2</option>
-           <option value="lv3">3</option>
-           <option value="lv4">4</option>
-           <option value="lv5">5</option>
-          </select>
-         </li>
-         <li>
-          <span>预警信息</span>
-          <textarea  placeholder="输入预警信息" class="textbox"></textarea>
-         </li>
-        </ul>
-       </div>
-       <!--以pop_cont_text分界-->
-       <div class="pop_cont_text">
-        	<!--  这里是文字性提示信息！ -->
-       </div>
-       <!--bottom:operate->button-->
-       <div class="btm_btn">
-        <input type="button" value="发布" class="input_btn trueBtn"/>
-        <input type="button" value="取消" class="input_btn falseBtn"/>
-       </div>
-      </div>
-     </section>
-  </div>
+    <div class="rt_content">
+        <div class="page_title">
+            <h2 class="fl">联动预警设置</h2>
+        </div>
+        <form class="form-inline" th:action="@{/prewarning/setting/query}" method="get">
+            <div id="distpicker" class="form-group">
+                <div class="form-group">
+                    <div style="position: relative;">
+                        <input id="city-picker3" class="form-control" type="text" data-toggle="city-picker" name="name"
+                               th:value="${name}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button class="group_btn" id="reset" type="button">重置</button>
+                </div>
+                <input class="group_btn" type="submit" value="确定"/>
+            </div>
+        </form>
+        <table class="table">
+            <tr>
+                <th>预警区域</th>
+                <th>预警级别</th>
+                <th>预警类型</th>
+                <th>预警阈值</th>
+                <th>预警方式</th>
+                <th>操作</th>
+            </tr>
+            <tr th:each="warning : ${warnings}">
+                <td th:text="${address}">大雁塔</td>
+                <td th:text="${warning.warnings.warninglevel}">5级</td>
+                <td th:text="${warning.type}">爆满</td>
+                <td th:text="${warning.warnings.warningvalue}">15000</td>
+                <td th:text="${warning.warnings.warningmethod}">短信推送</td>
+                <td>
+                    <!--<a class="link_btn modset_btn">修改</a>-->
+                    <a class="link_btn delset_btn"
+                       th:href="@{'/prewarning/setting/delete/'+${warning.warnings.warningid}}">删除</a>
+                </td>
+            </tr>
+        </table>
+        <button class="link_btn" id="addWarning_btn">增加联动预警</button>
+        <!--<button class="link_btn" id="issueWarning_btn">发布紧急预警</button>-->
+        <form th:action="@{/prewarning/setting}" method="post">
+            <section class="pop_bg" id="addWarning_pop">
+                <div class="pop_cont">
+                    <!--title-->
+                    <h3>增加联动预警</h3>
+                    <!--content-->
+                    <div class="pop_cont_input">
+                        <ul>
+                            <!--
+                             <li>
+                              <span>预警区域</span>
+                              <input type="text" placeholder="输入预警区域" class="textbox"/>
+                             </li>
+                              -->
+                            <!--<li>-->
+                            <!--<span class="ttl">选择阈值</span>-->
+                            <!--<input id="threshold_name" list="threshold_list" class="select" style="width: 200px;" />-->
+                            <!--<datalist id="threshold_list" >-->
+                            <!--<option value="爆满"></option>-->
+                            <!--<option value="拥挤"></option>-->
+                            <!--<option value="适宜"></option>-->
+                            <!--<option value="最佳"></option>-->
+                            <!--<option value="稀少"></option>-->
+                            <!--</datalist>-->
+                            <!--</li>-->
+
+                            <li>
+                                <span class="ttl">阈值级别</span>
+                                <select class="select sel_thrlevel" name="level">
+                                    <option value="lv1">1</option>
+                                    <option value="lv2">2</option>
+                                    <option value="lv3">3</option>
+                                    <option value="lv4">4</option>
+                                    <option value="lv5">5</option>
+                                </select>
+                                <select class="select sel_thrtype">
+                                    <option value="ty1">爆满</option>
+                                    <option value="ty2">拥挤</option>
+                                    <option value="ty3">适宜</option>
+                                    <option value="ty4">最佳</option>
+                                    <option value="ty5">稀少</option>
+                                </select>
+                            </li>
+                            <li>
+                                <span class="ttl">阈值数值</span>
+                                <input id="threshold_value" type="text" placeholder="输入阈值数值" class="textbox" name="warningvalue"/>
+                            </li>
+                            <li>
+                                <span class="ttl">预警方式</span>
+                                <select class="select" style="width: 210px;" name="method">
+                                    <option value="ty1">信息推送</option>
+                                    <option value="ty2">系统推送</option>
+                                    <option value="ty3">景区广播</option>
+                                </select>
+                            </li>
+                            <li>
+                                <span class="ttl">预警内容</span>
+                                <textarea placeholder="输入预警内容" class="textbox" name="text"></textarea>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--以pop_cont_text分界-->
+                    <div class="pop_cont_text">
+                        <!--  这里是文字性提示信息！ -->
+                    </div>
+                    <!--bottom:operate->button-->
+                    <div class="btm_btn">
+                        <input type="submit" value="确认" class="input_btn trueBtn"/>
+                        <input type="button" value="取消" class="input_btn falseBtn"/>
+                    </div>
+                </div>
+            </section>
+        </form>
+
+        <section class="pop_bg" id="issueWarning_pop">
+            <div class="pop_cont">
+                <!--title-->
+                <h3>发布紧急预警</h3>
+                <!--content-->
+                <div class="pop_cont_input">
+                    <ul>
+                        <!--
+                        <li>
+                         <span>预警区域</span>
+                         <input type="text" placeholder="输入预警区域" class="textbox"/>
+                        </li>
+                         -->
+                        <li>
+                            <span class="ttl">预警级别</span>
+                            <select class="select sel_thrlevel">
+                                <option value="lv1">1</option>
+                                <option value="lv2">2</option>
+                                <option value="lv3">3</option>
+                                <option value="lv4">4</option>
+                                <option value="lv5">5</option>
+                            </select>
+                        </li>
+                        <li>
+                            <span>预警信息</span>
+                            <textarea placeholder="输入预警信息" class="textbox"></textarea>
+                        </li>
+                    </ul>
+                </div>
+                <!--以pop_cont_text分界-->
+                <div class="pop_cont_text">
+                    <!--  这里是文字性提示信息！ -->
+                </div>
+                <!--bottom:operate->button-->
+                <div class="btm_btn">
+                    <input type="button" value="发布" class="input_btn trueBtn"/>
+                    <input type="button" value="取消" class="input_btn falseBtn"/>
+                </div>
+            </div>
+        </section>
+    </div>
 </section>
 </body>
 </html>

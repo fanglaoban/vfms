@@ -78,7 +78,7 @@ $().ready(function(){
 			"<dt id='adminModule'>" + "管理员管理" +
 			"</dt>" +
 			"<dd>" +
-				"<a href='/admin_account.html'>" + "账号管理" +
+				"<a href='/manager/account'>" + "账号管理" +
 				"</a>" +
 			"</dd>" +
 		"</dl>";
@@ -92,15 +92,15 @@ $().ready(function(){
 				"</a>" +
 			"</dd>" +*/
 			"<dd>" +
-			"<a href='/prewarning_threshold.html'>" + "容量阈值设置" +
+			"<a href='/user/prewarning/threshold'>" + "容量阈值设置" +
 			"</a>" +
 			"</dd>" +
 			"<dd>" +
-			"<a href='/prewarning_setting.html'>" + "联动预警设置" +
+			"<a href='/user/prewarning/setting'>" + "联动预警设置" +
 			"</a>" +
 			"</dd>" +
 			"<dd>" +
-			"<a href='/prewarning_record.html'>" + "预警记录查询" +
+			"<a href='/user/prewarning/record'>" + "预警记录查询" +
 			"</a>" +
 			"</dd>" +
 		"</dl>";
