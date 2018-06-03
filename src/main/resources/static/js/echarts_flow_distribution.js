@@ -47,7 +47,7 @@ $().ready(function () {
 
     var threshold = [];
 
-    threshold = [500, 1000, 1500, 2000, 3000];
+    threshold = [500, 2000, 3000, 4000, 5000];
 
 
     //纵坐标游客数量数据
@@ -65,11 +65,11 @@ $().ready(function () {
      });
      */
     //密度阈值数据
-    var threshold_dens = [500, 1000, 1500, 2000, 2000];
+    var threshold_dens = [50, 200, 300, 400, 500];
 
     //纵坐标密度数据
-    var dataDensity = [500, 1300, 1550, 2200, 3010, 3333, 2888, 2666, 2400, 2651, 2321, 1884, 1205,
-        1000, 1252, 1550, 2250, 2910, 2802, 2888, 2666, 2400, 2651, 2321, 1884, 1200];
+    var dataDensity = [253.4, 254.2, 265.4, 266.6, 259.9, 268.7, 269.9, 275.4, 280, 279.8, 283.5, 289.9, 295.4,
+                 297.8, 274.1, 281, 276.5, 268.9, 256.4, 264.1, 264.4, 260.1, 251.4, 250.3, 245.6];
 
 
     //横坐标时间数据
@@ -77,11 +77,11 @@ $().ready(function () {
     /*var dataTime = ["9:00","9:05","9:10","9:15","9:20","9:25","9:30","9:35","9:40","9:45","9:50","9:55","10:00",
      "10:05","10:10","10:15","10:20","10:25","10:30","10:35","10:40","10:45","10:50","10:55","11:00"];
      */
-    //纵坐标游客开源数据，按照大小从高到低,
-    var dataSource = [98564, 87541, 75644, 72122, 64521, 54554, 21321, 12231, 10001, 8789, 54657];
+    //纵坐标游客来源数据，按照大小从高到低,
+    var dataSource = [3200,1755, 1704, 1626, 1421, 1308, 1189, 982, 819, 639, 1568];
 
     //来源地横坐标地点名称
-    var dataSourceName = ['西安', '成都', '洛阳', '太原', '兰州', '武汉', '北京', '上海', '南京', '杭州', '其他'];
+    var dataSourceName = ['西安市', '咸阳市', '商洛市', '榆林市', '渭南市', '汉中市', '安康市', '延安市', '宝鸡市', '铜川市', '其他'];
 
 
     // 指定图表的配置项和数据
@@ -128,7 +128,7 @@ $().ready(function () {
             //data: dataTime
         },
         yAxis: {
-            name: '游客数量',
+            name: '游客数量（人）',
         },
         //------------ 视觉印象组件 ----------------
         visualMap: {
@@ -282,7 +282,7 @@ $().ready(function () {
             data: dataTime
         },
         yAxis: {
-            name: '游客密度',
+            name: '游客密度（人/平方公里）',
         },
         //------------ 视觉印象组件 ----------------
         visualMap: {
@@ -296,36 +296,36 @@ $().ready(function () {
                 {
 
                     gt: 0,
-                    lte: threshold[0],
+                    lte: threshold_dens[0],
                     color: '#90C9FA',
                     label: ' ',
 
                 }, {
-                    gt: threshold[0],
-                    lte: threshold[1],
+                    gt: threshold_dens[0],
+                    lte: threshold_dens[1],
                     color: '#69B2F3',
                     label: '稀少',
-                    label: '稀少 :' + threshold[0]
+                    label: '稀少 :' + threshold_dens[0]
                 }, {
-                    gt: threshold[1],
-                    lte: threshold[2],
+                    gt: threshold_dens[1],
+                    lte: threshold_dens[2],
                     color: '#2C83D8',
-                    label: '最佳 :' + threshold[1]
+                    label: '最佳 :' + threshold_dens[1]
                 }, {
-                    gt: threshold[2],
-                    lte: threshold[3],
+                    gt: threshold_dens[2],
+                    lte: threshold_dens[3],
                     color: '#1F76CE',
-                    label: '适宜 :' + threshold[2]
+                    label: '适宜 :' + threshold_dens[2]
 
                 }, {
-                    gt: threshold[3],
-                    lte: threshold[4],
+                    gt: threshold_dens[3],
+                    lte: threshold_dens[4],
                     color: '#156CBF',
-                    label: '拥挤 :' + threshold[3]
+                    label: '拥挤 :' + threshold_dens[3]
                 }, {
-                    gt: threshold[4],
+                    gt: threshold_dens[4],
                     color: '#005DAD',
-                    label: '爆满 :' + threshold[4]
+                    label: '爆满 :' + threshold_dens[4]
 
                 }],
             outOfRange: {
@@ -368,15 +368,15 @@ $().ready(function () {
             markLine: {
                 silent: true,
                 data: [{
-                    yAxis: threshold[0]
+                    yAxis: threshold_dens[0]
                 }, {
-                    yAxis: threshold[1]
+                    yAxis: threshold_dens[1]
                 }, {
-                    yAxis: threshold[2]
+                    yAxis: threshold_dens[2]
                 }, {
-                    yAxis: threshold[3]
+                    yAxis: threshold_dens[3]
                 }, {
-                    yAxis: threshold[4]
+                    yAxis: threshold_dens[4]
                 }]
             },
         }]
@@ -400,7 +400,7 @@ $().ready(function () {
             z: 10
         },
         yAxis: {
-            name: '游客数量',
+            name: '游客数量（人）',
             nameTextStyle: {
                 fontWeight: 'bold',
             },
